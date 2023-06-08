@@ -1,0 +1,1152 @@
+
+LED_sequence_V1.0.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004f4  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000568  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800060  00800060  00000568  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000568  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000598  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000110  00000000  00000000  000005d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001051  00000000  00000000  000006e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000846  00000000  00000000  00001735  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000a68  00000000  00000000  00001f7b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001a4  00000000  00000000  000029e4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000060a  00000000  00000000  00002b88  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000a90  00000000  00000000  00003192  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000c0  00000000  00000000  00003c22  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 32 00 	jmp	0x64	; 0x64 <__ctors_end>
+   4:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+   8:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+   c:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  10:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  14:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  18:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  1c:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  20:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  24:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  28:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  2c:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  30:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  34:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  38:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  3c:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  40:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  44:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  48:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  4c:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  50:	0c 94 44 00 	jmp	0x88	; 0x88 <__bad_interrupt>
+  54:	92 00       	.word	0x0092	; ????
+  56:	a3 00       	.word	0x00a3	; ????
+  58:	a8 00       	.word	0x00a8	; ????
+  5a:	ad 00       	.word	0x00ad	; ????
+  5c:	b2 00       	.word	0x00b2	; ????
+  5e:	b7 00       	.word	0x00b7	; ????
+  60:	bc 00       	.word	0x00bc	; ????
+  62:	c1 00       	.word	0x00c1	; ????
+
+00000064 <__ctors_end>:
+  64:	11 24       	eor	r1, r1
+  66:	1f be       	out	0x3f, r1	; 63
+  68:	cf e5       	ldi	r28, 0x5F	; 95
+  6a:	d8 e0       	ldi	r29, 0x08	; 8
+  6c:	de bf       	out	0x3e, r29	; 62
+  6e:	cd bf       	out	0x3d, r28	; 61
+
+00000070 <__do_clear_bss>:
+  70:	20 e0       	ldi	r18, 0x00	; 0
+  72:	a0 e6       	ldi	r26, 0x60	; 96
+  74:	b0 e0       	ldi	r27, 0x00	; 0
+  76:	01 c0       	rjmp	.+2      	; 0x7a <.do_clear_bss_start>
+
+00000078 <.do_clear_bss_loop>:
+  78:	1d 92       	st	X+, r1
+
+0000007a <.do_clear_bss_start>:
+  7a:	a1 36       	cpi	r26, 0x61	; 97
+  7c:	b2 07       	cpc	r27, r18
+  7e:	e1 f7       	brne	.-8      	; 0x78 <.do_clear_bss_loop>
+  80:	0e 94 dc 00 	call	0x1b8	; 0x1b8 <main>
+  84:	0c 94 78 02 	jmp	0x4f0	; 0x4f0 <_exit>
+
+00000088 <__bad_interrupt>:
+  88:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000008c <APP_init>:
+
+#include "application.h"
+
+void APP_init(void)
+{
+		LED_init(LED0_PORT,LED0_PIN);
+  8c:	60 e0       	ldi	r22, 0x00	; 0
+  8e:	80 e0       	ldi	r24, 0x00	; 0
+  90:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <LED_init>
+		LED_init(LED1_PORT,LED1_PIN);
+  94:	61 e0       	ldi	r22, 0x01	; 1
+  96:	80 e0       	ldi	r24, 0x00	; 0
+  98:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <LED_init>
+		LED_init(LED2_PORT,LED2_PIN);
+  9c:	62 e0       	ldi	r22, 0x02	; 2
+  9e:	80 e0       	ldi	r24, 0x00	; 0
+  a0:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <LED_init>
+		LED_init(LED3_PORT,LED3_PIN);
+  a4:	63 e0       	ldi	r22, 0x03	; 3
+  a6:	80 e0       	ldi	r24, 0x00	; 0
+  a8:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <LED_init>
+		BUTTON_init (BUTTON0_PORT, BUTTON0_PIN);	
+  ac:	66 e0       	ldi	r22, 0x06	; 6
+  ae:	83 e0       	ldi	r24, 0x03	; 3
+  b0:	0e 94 c9 00 	call	0x192	; 0x192 <BUTTON_init>
+  b4:	08 95       	ret
+
+000000b6 <APP_start>:
+	
+}
+void APP_start()
+{
+  b6:	cf 93       	push	r28
+  b8:	df 93       	push	r29
+  ba:	1f 92       	push	r1
+  bc:	cd b7       	in	r28, 0x3d	; 61
+  be:	de b7       	in	r29, 0x3e	; 62
+		boolean Check;
+		static u8 Counter = 0;
+		BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);
+  c0:	ae 01       	movw	r20, r28
+  c2:	4f 5f       	subi	r20, 0xFF	; 255
+  c4:	5f 4f       	sbci	r21, 0xFF	; 255
+  c6:	66 e0       	ldi	r22, 0x06	; 6
+  c8:	83 e0       	ldi	r24, 0x03	; 3
+  ca:	0e 94 cd 00 	call	0x19a	; 0x19a <BUTTON_read>
+		while (Check==false)
+  ce:	07 c0       	rjmp	.+14     	; 0xde <APP_start+0x28>
+		{
+			BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);	
+  d0:	ae 01       	movw	r20, r28
+  d2:	4f 5f       	subi	r20, 0xFF	; 255
+  d4:	5f 4f       	sbci	r21, 0xFF	; 255
+  d6:	66 e0       	ldi	r22, 0x06	; 6
+  d8:	83 e0       	ldi	r24, 0x03	; 3
+  da:	0e 94 cd 00 	call	0x19a	; 0x19a <BUTTON_read>
+void APP_start()
+{
+		boolean Check;
+		static u8 Counter = 0;
+		BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);
+		while (Check==false)
+  de:	89 81       	ldd	r24, Y+1	; 0x01
+  e0:	88 23       	and	r24, r24
+  e2:	b1 f3       	breq	.-20     	; 0xd0 <APP_start+0x1a>
+  e4:	07 c0       	rjmp	.+14     	; 0xf4 <APP_start+0x3e>
+		{
+			BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);	
+		}
+		while (Check==true)
+		{
+			BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);
+  e6:	ae 01       	movw	r20, r28
+  e8:	4f 5f       	subi	r20, 0xFF	; 255
+  ea:	5f 4f       	sbci	r21, 0xFF	; 255
+  ec:	66 e0       	ldi	r22, 0x06	; 6
+  ee:	83 e0       	ldi	r24, 0x03	; 3
+  f0:	0e 94 cd 00 	call	0x19a	; 0x19a <BUTTON_read>
+		BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);
+		while (Check==false)
+		{
+			BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);	
+		}
+		while (Check==true)
+  f4:	89 81       	ldd	r24, Y+1	; 0x01
+  f6:	81 11       	cpse	r24, r1
+  f8:	f6 cf       	rjmp	.-20     	; 0xe6 <APP_start+0x30>
+		{
+			BUTTON_read (BUTTON0_PORT, BUTTON0_PIN, &Check);
+		}
+		(Counter)++;
+  fa:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  fe:	8f 5f       	subi	r24, 0xFF	; 255
+ 100:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+		if (Counter==8){
+ 104:	88 30       	cpi	r24, 0x08	; 8
+ 106:	11 f4       	brne	.+4      	; 0x10c <APP_start+0x56>
+			Counter = 0;
+ 108:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+		}
+		switch(Counter)
+ 10c:	e0 91 60 00 	lds	r30, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 110:	8e 2f       	mov	r24, r30
+ 112:	90 e0       	ldi	r25, 0x00	; 0
+ 114:	88 30       	cpi	r24, 0x08	; 8
+ 116:	91 05       	cpc	r25, r1
+ 118:	c0 f5       	brcc	.+112    	; 0x18a <APP_start+0xd4>
+ 11a:	fc 01       	movw	r30, r24
+ 11c:	e6 5d       	subi	r30, 0xD6	; 214
+ 11e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 120:	0c 94 72 02 	jmp	0x4e4	; 0x4e4 <__tablejump2__>
+		{
+			case 0:
+			LED_off(LED0_PORT,LED0_PIN);
+ 124:	60 e0       	ldi	r22, 0x00	; 0
+ 126:	80 e0       	ldi	r24, 0x00	; 0
+ 128:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			LED_off(LED1_PORT,LED1_PIN);
+ 12c:	61 e0       	ldi	r22, 0x01	; 1
+ 12e:	80 e0       	ldi	r24, 0x00	; 0
+ 130:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			LED_off(LED2_PORT,LED2_PIN);
+ 134:	62 e0       	ldi	r22, 0x02	; 2
+ 136:	80 e0       	ldi	r24, 0x00	; 0
+ 138:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			LED_off(LED3_PORT,LED3_PIN);			
+ 13c:	63 e0       	ldi	r22, 0x03	; 3
+ 13e:	80 e0       	ldi	r24, 0x00	; 0
+ 140:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			break;
+ 144:	22 c0       	rjmp	.+68     	; 0x18a <APP_start+0xd4>
+			case 1:
+			LED_on(LED0_PORT,LED0_PIN);
+ 146:	60 e0       	ldi	r22, 0x00	; 0
+ 148:	80 e0       	ldi	r24, 0x00	; 0
+ 14a:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LED_on>
+			break;
+ 14e:	1d c0       	rjmp	.+58     	; 0x18a <APP_start+0xd4>
+			case 2:
+			LED_on(LED1_PORT,LED1_PIN);
+ 150:	61 e0       	ldi	r22, 0x01	; 1
+ 152:	80 e0       	ldi	r24, 0x00	; 0
+ 154:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LED_on>
+			break;
+ 158:	18 c0       	rjmp	.+48     	; 0x18a <APP_start+0xd4>
+			case 3:
+			LED_on(LED2_PORT,LED2_PIN);
+ 15a:	62 e0       	ldi	r22, 0x02	; 2
+ 15c:	80 e0       	ldi	r24, 0x00	; 0
+ 15e:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LED_on>
+			break;
+ 162:	13 c0       	rjmp	.+38     	; 0x18a <APP_start+0xd4>
+			case 4:
+			LED_on(LED3_PORT,LED3_PIN);
+ 164:	63 e0       	ldi	r22, 0x03	; 3
+ 166:	80 e0       	ldi	r24, 0x00	; 0
+ 168:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LED_on>
+			break;
+ 16c:	0e c0       	rjmp	.+28     	; 0x18a <APP_start+0xd4>
+			case 5:
+			LED_off(LED0_PORT,LED0_PIN);
+ 16e:	60 e0       	ldi	r22, 0x00	; 0
+ 170:	80 e0       	ldi	r24, 0x00	; 0
+ 172:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			break;
+ 176:	09 c0       	rjmp	.+18     	; 0x18a <APP_start+0xd4>
+			case 6:
+			LED_off(LED1_PORT,LED1_PIN);
+ 178:	61 e0       	ldi	r22, 0x01	; 1
+ 17a:	80 e0       	ldi	r24, 0x00	; 0
+ 17c:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			break;
+ 180:	04 c0       	rjmp	.+8      	; 0x18a <APP_start+0xd4>
+			case 7:
+			LED_off(LED2_PORT,LED2_PIN);
+ 182:	62 e0       	ldi	r22, 0x02	; 2
+ 184:	80 e0       	ldi	r24, 0x00	; 0
+ 186:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <LED_off>
+			break;					
+		
+		}
+}
+ 18a:	0f 90       	pop	r0
+ 18c:	df 91       	pop	r29
+ 18e:	cf 91       	pop	r28
+ 190:	08 95       	ret
+
+00000192 <BUTTON_init>:
+ * Created: 4/9/2023 9:10:35 AM
+ *  Author: MOHAMED ABDELSALAM
+ */ 
+#include "button.h"
+void BUTTON_init (u8 buttonport, u8 buttonpin){
+	DIO_init(buttonport,buttonpin,IN);
+ 192:	40 e0       	ldi	r20, 0x00	; 0
+ 194:	0e 94 e1 00 	call	0x1c2	; 0x1c2 <DIO_init>
+ 198:	08 95       	ret
+
+0000019a <BUTTON_read>:
+}
+void BUTTON_read (u8 buttonport, u8 buttonpin, boolean *pbool_a_value){
+	DIO_read(buttonport,buttonpin,pbool_a_value);
+ 19a:	0e 94 f6 01 	call	0x3ec	; 0x3ec <DIO_read>
+ 19e:	08 95       	ret
+
+000001a0 <LED_init>:
+ */ 
+#include "led.h"
+
+void LED_init (u8 port, u8 pin)
+{
+	DIO_init(port,pin,OUT);
+ 1a0:	41 e0       	ldi	r20, 0x01	; 1
+ 1a2:	0e 94 e1 00 	call	0x1c2	; 0x1c2 <DIO_init>
+ 1a6:	08 95       	ret
+
+000001a8 <LED_on>:
+}
+void LED_on (u8 port, u8 pin){
+	DIO_write(port,pin,HIGH);
+ 1a8:	41 e0       	ldi	r20, 0x01	; 1
+ 1aa:	0e 94 69 01 	call	0x2d2	; 0x2d2 <DIO_write>
+ 1ae:	08 95       	ret
+
+000001b0 <LED_off>:
+}
+void LED_off (u8 port, u8 pin){
+	DIO_write(port,pin,LOW);
+ 1b0:	40 e0       	ldi	r20, 0x00	; 0
+ 1b2:	0e 94 69 01 	call	0x2d2	; 0x2d2 <DIO_write>
+ 1b6:	08 95       	ret
+
+000001b8 <main>:
+ */ 
+
+#include "APPLIICATION/application.h"
+int main(void)
+{
+	APP_init();
+ 1b8:	0e 94 46 00 	call	0x8c	; 0x8c <APP_init>
+    while (1) 
+    {
+		APP_start();
+ 1bc:	0e 94 5b 00 	call	0xb6	; 0xb6 <APP_start>
+ 1c0:	fd cf       	rjmp	.-6      	; 0x1bc <main+0x4>
+
+000001c2 <DIO_init>:
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+	switch(enm_a_portNumber)
+ 1c2:	81 30       	cpi	r24, 0x01	; 1
+ 1c4:	29 f1       	breq	.+74     	; 0x210 <DIO_init+0x4e>
+ 1c6:	38 f0       	brcs	.+14     	; 0x1d6 <DIO_init+0x14>
+ 1c8:	82 30       	cpi	r24, 0x02	; 2
+ 1ca:	09 f4       	brne	.+2      	; 0x1ce <DIO_init+0xc>
+ 1cc:	3e c0       	rjmp	.+124    	; 0x24a <DIO_init+0x88>
+ 1ce:	83 30       	cpi	r24, 0x03	; 3
+ 1d0:	09 f4       	brne	.+2      	; 0x1d4 <DIO_init+0x12>
+ 1d2:	58 c0       	rjmp	.+176    	; 0x284 <DIO_init+0xc2>
+ 1d4:	74 c0       	rjmp	.+232    	; 0x2be <DIO_init+0xfc>
+	{
+		case A:
+		if (enm_a_pinDirection == OUT)
+ 1d6:	41 30       	cpi	r20, 0x01	; 1
+ 1d8:	61 f4       	brne	.+24     	; 0x1f2 <DIO_init+0x30>
+			{
+				SET_BIT( DIO_U8_DDRA_REG , enm_a_pinNumber );    //Set Initial PortA Direction
+ 1da:	2a b3       	in	r18, 0x1a	; 26
+ 1dc:	81 e0       	ldi	r24, 0x01	; 1
+ 1de:	90 e0       	ldi	r25, 0x00	; 0
+ 1e0:	02 c0       	rjmp	.+4      	; 0x1e6 <DIO_init+0x24>
+ 1e2:	88 0f       	add	r24, r24
+ 1e4:	99 1f       	adc	r25, r25
+ 1e6:	6a 95       	dec	r22
+ 1e8:	e2 f7       	brpl	.-8      	; 0x1e2 <DIO_init+0x20>
+ 1ea:	82 2b       	or	r24, r18
+ 1ec:	8a bb       	out	0x1a, r24	; 26
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 1ee:	86 ef       	ldi	r24, 0xF6	; 246
+ 1f0:	08 95       	ret
+		case A:
+		if (enm_a_pinDirection == OUT)
+			{
+				SET_BIT( DIO_U8_DDRA_REG , enm_a_pinNumber );    //Set Initial PortA Direction
+			}
+			else if (enm_a_pinDirection == IN)
+ 1f2:	41 11       	cpse	r20, r1
+ 1f4:	66 c0       	rjmp	.+204    	; 0x2c2 <DIO_init+0x100>
+			{
+				CLR_BIT( DIO_U8_DDRA_REG ,enm_a_pinNumber);   //clear Initial PortA Direction
+ 1f6:	2a b3       	in	r18, 0x1a	; 26
+ 1f8:	81 e0       	ldi	r24, 0x01	; 1
+ 1fa:	90 e0       	ldi	r25, 0x00	; 0
+ 1fc:	02 c0       	rjmp	.+4      	; 0x202 <DIO_init+0x40>
+ 1fe:	88 0f       	add	r24, r24
+ 200:	99 1f       	adc	r25, r25
+ 202:	6a 95       	dec	r22
+ 204:	e2 f7       	brpl	.-8      	; 0x1fe <DIO_init+0x3c>
+ 206:	80 95       	com	r24
+ 208:	82 23       	and	r24, r18
+ 20a:	8a bb       	out	0x1a, r24	; 26
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 20c:	86 ef       	ldi	r24, 0xF6	; 246
+ 20e:	08 95       	ret
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+			}
+		break;
+		case B:
+			if (enm_a_pinDirection == OUT)
+ 210:	41 30       	cpi	r20, 0x01	; 1
+ 212:	61 f4       	brne	.+24     	; 0x22c <DIO_init+0x6a>
+			{
+				SET_BIT( DIO_U8_DDRB_REG , enm_a_pinNumber );    //Set Initial PortB Direction
+ 214:	27 b3       	in	r18, 0x17	; 23
+ 216:	81 e0       	ldi	r24, 0x01	; 1
+ 218:	90 e0       	ldi	r25, 0x00	; 0
+ 21a:	02 c0       	rjmp	.+4      	; 0x220 <DIO_init+0x5e>
+ 21c:	88 0f       	add	r24, r24
+ 21e:	99 1f       	adc	r25, r25
+ 220:	6a 95       	dec	r22
+ 222:	e2 f7       	brpl	.-8      	; 0x21c <DIO_init+0x5a>
+ 224:	82 2b       	or	r24, r18
+ 226:	87 bb       	out	0x17, r24	; 23
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 228:	86 ef       	ldi	r24, 0xF6	; 246
+ 22a:	08 95       	ret
+		case B:
+			if (enm_a_pinDirection == OUT)
+			{
+				SET_BIT( DIO_U8_DDRB_REG , enm_a_pinNumber );    //Set Initial PortB Direction
+			}
+			else if (enm_a_pinDirection == IN)
+ 22c:	41 11       	cpse	r20, r1
+ 22e:	4b c0       	rjmp	.+150    	; 0x2c6 <DIO_init+0x104>
+			{
+				CLR_BIT( DIO_U8_DDRB_REG , enm_a_pinNumber );   //clear Initial PortB Direction
+ 230:	27 b3       	in	r18, 0x17	; 23
+ 232:	81 e0       	ldi	r24, 0x01	; 1
+ 234:	90 e0       	ldi	r25, 0x00	; 0
+ 236:	02 c0       	rjmp	.+4      	; 0x23c <DIO_init+0x7a>
+ 238:	88 0f       	add	r24, r24
+ 23a:	99 1f       	adc	r25, r25
+ 23c:	6a 95       	dec	r22
+ 23e:	e2 f7       	brpl	.-8      	; 0x238 <DIO_init+0x76>
+ 240:	80 95       	com	r24
+ 242:	82 23       	and	r24, r18
+ 244:	87 bb       	out	0x17, r24	; 23
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 246:	86 ef       	ldi	r24, 0xF6	; 246
+ 248:	08 95       	ret
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+			}
+		break;
+		case C:
+			if (enm_a_pinDirection == OUT)
+ 24a:	41 30       	cpi	r20, 0x01	; 1
+ 24c:	61 f4       	brne	.+24     	; 0x266 <DIO_init+0xa4>
+			{
+				SET_BIT( DIO_U8_DDRC_REG , enm_a_pinNumber );    //Set Initial PortC Direction
+ 24e:	24 b3       	in	r18, 0x14	; 20
+ 250:	81 e0       	ldi	r24, 0x01	; 1
+ 252:	90 e0       	ldi	r25, 0x00	; 0
+ 254:	02 c0       	rjmp	.+4      	; 0x25a <DIO_init+0x98>
+ 256:	88 0f       	add	r24, r24
+ 258:	99 1f       	adc	r25, r25
+ 25a:	6a 95       	dec	r22
+ 25c:	e2 f7       	brpl	.-8      	; 0x256 <DIO_init+0x94>
+ 25e:	82 2b       	or	r24, r18
+ 260:	84 bb       	out	0x14, r24	; 20
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 262:	86 ef       	ldi	r24, 0xF6	; 246
+ 264:	08 95       	ret
+		case C:
+			if (enm_a_pinDirection == OUT)
+			{
+				SET_BIT( DIO_U8_DDRC_REG , enm_a_pinNumber );    //Set Initial PortC Direction
+			}
+			else if (enm_a_pinDirection == IN)
+ 266:	41 11       	cpse	r20, r1
+ 268:	30 c0       	rjmp	.+96     	; 0x2ca <DIO_init+0x108>
+			{
+				CLR_BIT( DIO_U8_DDRC_REG  , enm_a_pinNumber );   //clear Initial PortC Direction
+ 26a:	24 b3       	in	r18, 0x14	; 20
+ 26c:	81 e0       	ldi	r24, 0x01	; 1
+ 26e:	90 e0       	ldi	r25, 0x00	; 0
+ 270:	02 c0       	rjmp	.+4      	; 0x276 <DIO_init+0xb4>
+ 272:	88 0f       	add	r24, r24
+ 274:	99 1f       	adc	r25, r25
+ 276:	6a 95       	dec	r22
+ 278:	e2 f7       	brpl	.-8      	; 0x272 <DIO_init+0xb0>
+ 27a:	80 95       	com	r24
+ 27c:	82 23       	and	r24, r18
+ 27e:	84 bb       	out	0x14, r24	; 20
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 280:	86 ef       	ldi	r24, 0xF6	; 246
+ 282:	08 95       	ret
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+			}			
+		break;
+		case D:
+			if (enm_a_pinDirection == OUT)
+ 284:	41 30       	cpi	r20, 0x01	; 1
+ 286:	61 f4       	brne	.+24     	; 0x2a0 <DIO_init+0xde>
+			{
+				SET_BIT( DIO_U8_DDRD_REG , enm_a_pinNumber );    //Set Initial PortD Direction
+ 288:	21 b3       	in	r18, 0x11	; 17
+ 28a:	81 e0       	ldi	r24, 0x01	; 1
+ 28c:	90 e0       	ldi	r25, 0x00	; 0
+ 28e:	02 c0       	rjmp	.+4      	; 0x294 <DIO_init+0xd2>
+ 290:	88 0f       	add	r24, r24
+ 292:	99 1f       	adc	r25, r25
+ 294:	6a 95       	dec	r22
+ 296:	e2 f7       	brpl	.-8      	; 0x290 <DIO_init+0xce>
+ 298:	82 2b       	or	r24, r18
+ 29a:	81 bb       	out	0x11, r24	; 17
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 29c:	86 ef       	ldi	r24, 0xF6	; 246
+ 29e:	08 95       	ret
+		case D:
+			if (enm_a_pinDirection == OUT)
+			{
+				SET_BIT( DIO_U8_DDRD_REG , enm_a_pinNumber );    //Set Initial PortD Direction
+			}
+			else if (enm_a_pinDirection == IN)
+ 2a0:	41 11       	cpse	r20, r1
+ 2a2:	15 c0       	rjmp	.+42     	; 0x2ce <DIO_init+0x10c>
+			{
+				CLR_BIT( DIO_U8_DDRD_REG , enm_a_pinNumber );   //clear Initial PortD Direction
+ 2a4:	21 b3       	in	r18, 0x11	; 17
+ 2a6:	81 e0       	ldi	r24, 0x01	; 1
+ 2a8:	90 e0       	ldi	r25, 0x00	; 0
+ 2aa:	02 c0       	rjmp	.+4      	; 0x2b0 <DIO_init+0xee>
+ 2ac:	88 0f       	add	r24, r24
+ 2ae:	99 1f       	adc	r25, r25
+ 2b0:	6a 95       	dec	r22
+ 2b2:	e2 f7       	brpl	.-8      	; 0x2ac <DIO_init+0xea>
+ 2b4:	80 95       	com	r24
+ 2b6:	82 23       	and	r24, r18
+ 2b8:	81 bb       	out	0x11, r24	; 17
+ Output: enm_dio_errors_t
+ Description: Function to initialize Pin direction.
+*/
+enm_dio_errors_t DIO_init ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinDirection_t enm_a_pinDirection )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 2ba:	86 ef       	ldi	r24, 0xF6	; 246
+ 2bc:	08 95       	ret
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+			}			
+		break;
+		default:
+		u8_l_ret = DIO_PORT_NUMBER_ERROR;
+ 2be:	81 ef       	ldi	r24, 0xF1	; 241
+ 2c0:	08 95       	ret
+			{
+				CLR_BIT( DIO_U8_DDRA_REG ,enm_a_pinNumber);   //clear Initial PortA Direction
+			}
+			else
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+ 2c2:	80 ef       	ldi	r24, 0xF0	; 240
+ 2c4:	08 95       	ret
+			{
+				CLR_BIT( DIO_U8_DDRB_REG , enm_a_pinNumber );   //clear Initial PortB Direction
+			}
+			else
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+ 2c6:	80 ef       	ldi	r24, 0xF0	; 240
+ 2c8:	08 95       	ret
+			{
+				CLR_BIT( DIO_U8_DDRC_REG  , enm_a_pinNumber );   //clear Initial PortC Direction
+			}
+			else
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+ 2ca:	80 ef       	ldi	r24, 0xF0	; 240
+ 2cc:	08 95       	ret
+			{
+				CLR_BIT( DIO_U8_DDRD_REG , enm_a_pinNumber );   //clear Initial PortD Direction
+			}
+			else
+			{
+				u8_l_ret = DIO_PIN_DIRECTION_ERROR;
+ 2ce:	80 ef       	ldi	r24, 0xF0	; 240
+		default:
+		u8_l_ret = DIO_PORT_NUMBER_ERROR;
+		break;
+	}	
+	return u8_l_ret;
+}
+ 2d0:	08 95       	ret
+
+000002d2 <DIO_write>:
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+	if ((P0 <= enm_a_pinNumber) && (P7 >= enm_a_pinNumber))
+ 2d2:	68 30       	cpi	r22, 0x08	; 8
+ 2d4:	08 f0       	brcs	.+2      	; 0x2d8 <DIO_write+0x6>
+ 2d6:	7e c0       	rjmp	.+252    	; 0x3d4 <DIO_write+0x102>
+	{
+		switch(enm_a_portNumber)
+ 2d8:	81 30       	cpi	r24, 0x01	; 1
+ 2da:	29 f1       	breq	.+74     	; 0x326 <DIO_write+0x54>
+ 2dc:	38 f0       	brcs	.+14     	; 0x2ec <DIO_write+0x1a>
+ 2de:	82 30       	cpi	r24, 0x02	; 2
+ 2e0:	09 f4       	brne	.+2      	; 0x2e4 <DIO_write+0x12>
+ 2e2:	3e c0       	rjmp	.+124    	; 0x360 <DIO_write+0x8e>
+ 2e4:	83 30       	cpi	r24, 0x03	; 3
+ 2e6:	09 f4       	brne	.+2      	; 0x2ea <DIO_write+0x18>
+ 2e8:	58 c0       	rjmp	.+176    	; 0x39a <DIO_write+0xc8>
+ 2ea:	76 c0       	rjmp	.+236    	; 0x3d8 <DIO_write+0x106>
+		{
+			case A:
+				if (enm_a_pinWritevalue == HIGH)
+ 2ec:	41 30       	cpi	r20, 0x01	; 1
+ 2ee:	61 f4       	brne	.+24     	; 0x308 <DIO_write+0x36>
+				{
+					SET_BIT( DIO_U8_PORTA_REG , enm_a_pinNumber );	//Set value of pinNumber in PortA
+ 2f0:	2b b3       	in	r18, 0x1b	; 27
+ 2f2:	81 e0       	ldi	r24, 0x01	; 1
+ 2f4:	90 e0       	ldi	r25, 0x00	; 0
+ 2f6:	02 c0       	rjmp	.+4      	; 0x2fc <DIO_write+0x2a>
+ 2f8:	88 0f       	add	r24, r24
+ 2fa:	99 1f       	adc	r25, r25
+ 2fc:	6a 95       	dec	r22
+ 2fe:	e2 f7       	brpl	.-8      	; 0x2f8 <DIO_write+0x26>
+ 300:	82 2b       	or	r24, r18
+ 302:	8b bb       	out	0x1b, r24	; 27
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 304:	86 ef       	ldi	r24, 0xF6	; 246
+ 306:	08 95       	ret
+			case A:
+				if (enm_a_pinWritevalue == HIGH)
+				{
+					SET_BIT( DIO_U8_PORTA_REG , enm_a_pinNumber );	//Set value of pinNumber in PortA
+				}
+				else if (enm_a_pinWritevalue == LOW)
+ 308:	41 11       	cpse	r20, r1
+ 30a:	68 c0       	rjmp	.+208    	; 0x3dc <DIO_write+0x10a>
+				{
+					CLR_BIT( DIO_U8_PORTA_REG , enm_a_pinNumber );	//clear value of pinNumber in PortA
+ 30c:	2b b3       	in	r18, 0x1b	; 27
+ 30e:	81 e0       	ldi	r24, 0x01	; 1
+ 310:	90 e0       	ldi	r25, 0x00	; 0
+ 312:	02 c0       	rjmp	.+4      	; 0x318 <DIO_write+0x46>
+ 314:	88 0f       	add	r24, r24
+ 316:	99 1f       	adc	r25, r25
+ 318:	6a 95       	dec	r22
+ 31a:	e2 f7       	brpl	.-8      	; 0x314 <DIO_write+0x42>
+ 31c:	80 95       	com	r24
+ 31e:	82 23       	and	r24, r18
+ 320:	8b bb       	out	0x1b, r24	; 27
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 322:	86 ef       	ldi	r24, 0xF6	; 246
+ 324:	08 95       	ret
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+				}
+			break;
+			case B:
+				if (enm_a_pinWritevalue == HIGH)
+ 326:	41 30       	cpi	r20, 0x01	; 1
+ 328:	61 f4       	brne	.+24     	; 0x342 <DIO_write+0x70>
+				{
+					SET_BIT( DIO_U8_PORTB_REG , enm_a_pinNumber );	//Set value of pinNumber in PortB
+ 32a:	28 b3       	in	r18, 0x18	; 24
+ 32c:	81 e0       	ldi	r24, 0x01	; 1
+ 32e:	90 e0       	ldi	r25, 0x00	; 0
+ 330:	02 c0       	rjmp	.+4      	; 0x336 <DIO_write+0x64>
+ 332:	88 0f       	add	r24, r24
+ 334:	99 1f       	adc	r25, r25
+ 336:	6a 95       	dec	r22
+ 338:	e2 f7       	brpl	.-8      	; 0x332 <DIO_write+0x60>
+ 33a:	82 2b       	or	r24, r18
+ 33c:	88 bb       	out	0x18, r24	; 24
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 33e:	86 ef       	ldi	r24, 0xF6	; 246
+ 340:	08 95       	ret
+			case B:
+				if (enm_a_pinWritevalue == HIGH)
+				{
+					SET_BIT( DIO_U8_PORTB_REG , enm_a_pinNumber );	//Set value of pinNumber in PortB
+				}
+				else if (enm_a_pinWritevalue == LOW)
+ 342:	41 11       	cpse	r20, r1
+ 344:	4d c0       	rjmp	.+154    	; 0x3e0 <DIO_write+0x10e>
+				{
+					CLR_BIT( DIO_U8_PORTB_REG , enm_a_pinNumber );	//clear value of pinNumber in PortB
+ 346:	28 b3       	in	r18, 0x18	; 24
+ 348:	81 e0       	ldi	r24, 0x01	; 1
+ 34a:	90 e0       	ldi	r25, 0x00	; 0
+ 34c:	02 c0       	rjmp	.+4      	; 0x352 <DIO_write+0x80>
+ 34e:	88 0f       	add	r24, r24
+ 350:	99 1f       	adc	r25, r25
+ 352:	6a 95       	dec	r22
+ 354:	e2 f7       	brpl	.-8      	; 0x34e <DIO_write+0x7c>
+ 356:	80 95       	com	r24
+ 358:	82 23       	and	r24, r18
+ 35a:	88 bb       	out	0x18, r24	; 24
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 35c:	86 ef       	ldi	r24, 0xF6	; 246
+ 35e:	08 95       	ret
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+				}
+			break;
+			case C:
+				if (enm_a_pinWritevalue == HIGH)
+ 360:	41 30       	cpi	r20, 0x01	; 1
+ 362:	61 f4       	brne	.+24     	; 0x37c <DIO_write+0xaa>
+				{
+					SET_BIT( DIO_U8_PORTC_REG , enm_a_pinNumber );	//Set value of pinNumber in PortC
+ 364:	25 b3       	in	r18, 0x15	; 21
+ 366:	81 e0       	ldi	r24, 0x01	; 1
+ 368:	90 e0       	ldi	r25, 0x00	; 0
+ 36a:	02 c0       	rjmp	.+4      	; 0x370 <DIO_write+0x9e>
+ 36c:	88 0f       	add	r24, r24
+ 36e:	99 1f       	adc	r25, r25
+ 370:	6a 95       	dec	r22
+ 372:	e2 f7       	brpl	.-8      	; 0x36c <DIO_write+0x9a>
+ 374:	82 2b       	or	r24, r18
+ 376:	85 bb       	out	0x15, r24	; 21
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 378:	86 ef       	ldi	r24, 0xF6	; 246
+ 37a:	08 95       	ret
+			case C:
+				if (enm_a_pinWritevalue == HIGH)
+				{
+					SET_BIT( DIO_U8_PORTC_REG , enm_a_pinNumber );	//Set value of pinNumber in PortC
+				}
+				else if (enm_a_pinWritevalue == LOW)
+ 37c:	41 11       	cpse	r20, r1
+ 37e:	32 c0       	rjmp	.+100    	; 0x3e4 <DIO_write+0x112>
+				{
+					CLR_BIT( DIO_U8_PORTC_REG , enm_a_pinNumber );	//clear value of pinNumber in PortC
+ 380:	25 b3       	in	r18, 0x15	; 21
+ 382:	81 e0       	ldi	r24, 0x01	; 1
+ 384:	90 e0       	ldi	r25, 0x00	; 0
+ 386:	02 c0       	rjmp	.+4      	; 0x38c <DIO_write+0xba>
+ 388:	88 0f       	add	r24, r24
+ 38a:	99 1f       	adc	r25, r25
+ 38c:	6a 95       	dec	r22
+ 38e:	e2 f7       	brpl	.-8      	; 0x388 <DIO_write+0xb6>
+ 390:	80 95       	com	r24
+ 392:	82 23       	and	r24, r18
+ 394:	85 bb       	out	0x15, r24	; 21
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 396:	86 ef       	ldi	r24, 0xF6	; 246
+ 398:	08 95       	ret
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+				}				
+			break;
+			case D:
+				if (enm_a_pinWritevalue == HIGH)
+ 39a:	41 30       	cpi	r20, 0x01	; 1
+ 39c:	61 f4       	brne	.+24     	; 0x3b6 <DIO_write+0xe4>
+				{
+					SET_BIT( DIO_U8_PORTD_REG , enm_a_pinNumber );	//Set value of pinNumber in PortD
+ 39e:	22 b3       	in	r18, 0x12	; 18
+ 3a0:	81 e0       	ldi	r24, 0x01	; 1
+ 3a2:	90 e0       	ldi	r25, 0x00	; 0
+ 3a4:	02 c0       	rjmp	.+4      	; 0x3aa <DIO_write+0xd8>
+ 3a6:	88 0f       	add	r24, r24
+ 3a8:	99 1f       	adc	r25, r25
+ 3aa:	6a 95       	dec	r22
+ 3ac:	e2 f7       	brpl	.-8      	; 0x3a6 <DIO_write+0xd4>
+ 3ae:	82 2b       	or	r24, r18
+ 3b0:	82 bb       	out	0x12, r24	; 18
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 3b2:	86 ef       	ldi	r24, 0xF6	; 246
+ 3b4:	08 95       	ret
+			case D:
+				if (enm_a_pinWritevalue == HIGH)
+				{
+					SET_BIT( DIO_U8_PORTD_REG , enm_a_pinNumber );	//Set value of pinNumber in PortD
+				}
+				else if (enm_a_pinWritevalue == LOW)
+ 3b6:	41 11       	cpse	r20, r1
+ 3b8:	17 c0       	rjmp	.+46     	; 0x3e8 <DIO_write+0x116>
+				{
+					CLR_BIT( DIO_U8_PORTD_REG , enm_a_pinNumber );	//clear value of pinNumber in PortD
+ 3ba:	22 b3       	in	r18, 0x12	; 18
+ 3bc:	81 e0       	ldi	r24, 0x01	; 1
+ 3be:	90 e0       	ldi	r25, 0x00	; 0
+ 3c0:	02 c0       	rjmp	.+4      	; 0x3c6 <DIO_write+0xf4>
+ 3c2:	88 0f       	add	r24, r24
+ 3c4:	99 1f       	adc	r25, r25
+ 3c6:	6a 95       	dec	r22
+ 3c8:	e2 f7       	brpl	.-8      	; 0x3c2 <DIO_write+0xf0>
+ 3ca:	80 95       	com	r24
+ 3cc:	82 23       	and	r24, r18
+ 3ce:	82 bb       	out	0x12, r24	; 18
+ Output: enm_dio_errors_t
+ Description: Function to set Pin value.
+*/
+enm_dio_errors_t DIO_write ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, enm_dio_pinWritevalue_t enm_a_pinWritevalue )
+{
+	u8 u8_l_ret = DIO_OKAY;
+ 3d0:	86 ef       	ldi	r24, 0xF6	; 246
+ 3d2:	08 95       	ret
+			break;
+		}
+	}
+	else
+	{
+		u8_l_ret = DIO_PIN_NUMBER_ERROR;
+ 3d4:	82 ef       	ldi	r24, 0xF2	; 242
+ 3d6:	08 95       	ret
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+				}				
+			break;
+			default:
+			u8_l_ret = DIO_PORT_NUMBER_ERROR;
+ 3d8:	81 ef       	ldi	r24, 0xF1	; 241
+ 3da:	08 95       	ret
+				{
+					CLR_BIT( DIO_U8_PORTA_REG , enm_a_pinNumber );	//clear value of pinNumber in PortA
+				}
+				else
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+ 3dc:	83 ef       	ldi	r24, 0xF3	; 243
+ 3de:	08 95       	ret
+				{
+					CLR_BIT( DIO_U8_PORTB_REG , enm_a_pinNumber );	//clear value of pinNumber in PortB
+				}
+				else
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+ 3e0:	83 ef       	ldi	r24, 0xF3	; 243
+ 3e2:	08 95       	ret
+				{
+					CLR_BIT( DIO_U8_PORTC_REG , enm_a_pinNumber );	//clear value of pinNumber in PortC
+				}
+				else
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+ 3e4:	83 ef       	ldi	r24, 0xF3	; 243
+ 3e6:	08 95       	ret
+				{
+					CLR_BIT( DIO_U8_PORTD_REG , enm_a_pinNumber );	//clear value of pinNumber in PortD
+				}
+				else
+				{
+					u8_l_ret = DIO_PIN_WRITE_VALUE_ERROR;
+ 3e8:	83 ef       	ldi	r24, 0xF3	; 243
+	else
+	{
+		u8_l_ret = DIO_PIN_NUMBER_ERROR;
+	}
+	return u8_l_ret;
+}
+ 3ea:	08 95       	ret
+
+000003ec <DIO_read>:
+ Description: Function to get Pin value.
+*/
+enm_dio_errors_t DIO_read ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, boolean *pbool_a_returnedData )
+{	
+	u8 u8_l_ret = DIO_OKAY;
+	if ((P0 <= enm_a_pinNumber) && (P7 >= enm_a_pinNumber))
+ 3ec:	68 30       	cpi	r22, 0x08	; 8
+ 3ee:	08 f0       	brcs	.+2      	; 0x3f2 <DIO_read+0x6>
+ 3f0:	75 c0       	rjmp	.+234    	; 0x4dc <__EEPROM_REGION_LENGTH__+0xdc>
+	{
+		switch(enm_a_portNumber)
+ 3f2:	81 30       	cpi	r24, 0x01	; 1
+ 3f4:	11 f1       	breq	.+68     	; 0x43a <__EEPROM_REGION_LENGTH__+0x3a>
+ 3f6:	30 f0       	brcs	.+12     	; 0x404 <__EEPROM_REGION_LENGTH__+0x4>
+ 3f8:	82 30       	cpi	r24, 0x02	; 2
+ 3fa:	d1 f1       	breq	.+116    	; 0x470 <__EEPROM_REGION_LENGTH__+0x70>
+ 3fc:	83 30       	cpi	r24, 0x03	; 3
+ 3fe:	09 f4       	brne	.+2      	; 0x402 <__EEPROM_REGION_LENGTH__+0x2>
+ 400:	52 c0       	rjmp	.+164    	; 0x4a6 <__EEPROM_REGION_LENGTH__+0xa6>
+ 402:	6e c0       	rjmp	.+220    	; 0x4e0 <__EEPROM_REGION_LENGTH__+0xe0>
+		{
+			case A:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINA_REG , enm_a_pinNumber );
+ 404:	79 b3       	in	r23, 0x19	; 25
+ 406:	81 e0       	ldi	r24, 0x01	; 1
+ 408:	90 e0       	ldi	r25, 0x00	; 0
+ 40a:	9c 01       	movw	r18, r24
+ 40c:	06 2e       	mov	r0, r22
+ 40e:	02 c0       	rjmp	.+4      	; 0x414 <__EEPROM_REGION_LENGTH__+0x14>
+ 410:	22 0f       	add	r18, r18
+ 412:	33 1f       	adc	r19, r19
+ 414:	0a 94       	dec	r0
+ 416:	e2 f7       	brpl	.-8      	; 0x410 <__EEPROM_REGION_LENGTH__+0x10>
+ 418:	87 2f       	mov	r24, r23
+ 41a:	90 e0       	ldi	r25, 0x00	; 0
+ 41c:	82 23       	and	r24, r18
+ 41e:	93 23       	and	r25, r19
+ 420:	02 c0       	rjmp	.+4      	; 0x426 <__EEPROM_REGION_LENGTH__+0x26>
+ 422:	95 95       	asr	r25
+ 424:	87 95       	ror	r24
+ 426:	6a 95       	dec	r22
+ 428:	e2 f7       	brpl	.-8      	; 0x422 <__EEPROM_REGION_LENGTH__+0x22>
+ 42a:	21 e0       	ldi	r18, 0x01	; 1
+ 42c:	89 2b       	or	r24, r25
+ 42e:	09 f4       	brne	.+2      	; 0x432 <__EEPROM_REGION_LENGTH__+0x32>
+ 430:	20 e0       	ldi	r18, 0x00	; 0
+ 432:	fa 01       	movw	r30, r20
+ 434:	20 83       	st	Z, r18
+ Output: enm_dio_errors_t
+ Description: Function to get Pin value.
+*/
+enm_dio_errors_t DIO_read ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, boolean *pbool_a_returnedData )
+{	
+	u8 u8_l_ret = DIO_OKAY;
+ 436:	86 ef       	ldi	r24, 0xF6	; 246
+	{
+		switch(enm_a_portNumber)
+		{
+			case A:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINA_REG , enm_a_pinNumber );
+			break;
+ 438:	08 95       	ret
+			case B:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINB_REG , enm_a_pinNumber );
+ 43a:	76 b3       	in	r23, 0x16	; 22
+ 43c:	81 e0       	ldi	r24, 0x01	; 1
+ 43e:	90 e0       	ldi	r25, 0x00	; 0
+ 440:	9c 01       	movw	r18, r24
+ 442:	06 2e       	mov	r0, r22
+ 444:	02 c0       	rjmp	.+4      	; 0x44a <__EEPROM_REGION_LENGTH__+0x4a>
+ 446:	22 0f       	add	r18, r18
+ 448:	33 1f       	adc	r19, r19
+ 44a:	0a 94       	dec	r0
+ 44c:	e2 f7       	brpl	.-8      	; 0x446 <__EEPROM_REGION_LENGTH__+0x46>
+ 44e:	87 2f       	mov	r24, r23
+ 450:	90 e0       	ldi	r25, 0x00	; 0
+ 452:	82 23       	and	r24, r18
+ 454:	93 23       	and	r25, r19
+ 456:	02 c0       	rjmp	.+4      	; 0x45c <__EEPROM_REGION_LENGTH__+0x5c>
+ 458:	95 95       	asr	r25
+ 45a:	87 95       	ror	r24
+ 45c:	6a 95       	dec	r22
+ 45e:	e2 f7       	brpl	.-8      	; 0x458 <__EEPROM_REGION_LENGTH__+0x58>
+ 460:	21 e0       	ldi	r18, 0x01	; 1
+ 462:	89 2b       	or	r24, r25
+ 464:	09 f4       	brne	.+2      	; 0x468 <__EEPROM_REGION_LENGTH__+0x68>
+ 466:	20 e0       	ldi	r18, 0x00	; 0
+ 468:	fa 01       	movw	r30, r20
+ 46a:	20 83       	st	Z, r18
+ Output: enm_dio_errors_t
+ Description: Function to get Pin value.
+*/
+enm_dio_errors_t DIO_read ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, boolean *pbool_a_returnedData )
+{	
+	u8 u8_l_ret = DIO_OKAY;
+ 46c:	86 ef       	ldi	r24, 0xF6	; 246
+			case A:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINA_REG , enm_a_pinNumber );
+			break;
+			case B:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINB_REG , enm_a_pinNumber );
+			break;
+ 46e:	08 95       	ret
+			case C:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINC_REG , enm_a_pinNumber );
+ 470:	73 b3       	in	r23, 0x13	; 19
+ 472:	81 e0       	ldi	r24, 0x01	; 1
+ 474:	90 e0       	ldi	r25, 0x00	; 0
+ 476:	9c 01       	movw	r18, r24
+ 478:	06 2e       	mov	r0, r22
+ 47a:	02 c0       	rjmp	.+4      	; 0x480 <__EEPROM_REGION_LENGTH__+0x80>
+ 47c:	22 0f       	add	r18, r18
+ 47e:	33 1f       	adc	r19, r19
+ 480:	0a 94       	dec	r0
+ 482:	e2 f7       	brpl	.-8      	; 0x47c <__EEPROM_REGION_LENGTH__+0x7c>
+ 484:	87 2f       	mov	r24, r23
+ 486:	90 e0       	ldi	r25, 0x00	; 0
+ 488:	82 23       	and	r24, r18
+ 48a:	93 23       	and	r25, r19
+ 48c:	02 c0       	rjmp	.+4      	; 0x492 <__EEPROM_REGION_LENGTH__+0x92>
+ 48e:	95 95       	asr	r25
+ 490:	87 95       	ror	r24
+ 492:	6a 95       	dec	r22
+ 494:	e2 f7       	brpl	.-8      	; 0x48e <__EEPROM_REGION_LENGTH__+0x8e>
+ 496:	21 e0       	ldi	r18, 0x01	; 1
+ 498:	89 2b       	or	r24, r25
+ 49a:	09 f4       	brne	.+2      	; 0x49e <__EEPROM_REGION_LENGTH__+0x9e>
+ 49c:	20 e0       	ldi	r18, 0x00	; 0
+ 49e:	fa 01       	movw	r30, r20
+ 4a0:	20 83       	st	Z, r18
+ Output: enm_dio_errors_t
+ Description: Function to get Pin value.
+*/
+enm_dio_errors_t DIO_read ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, boolean *pbool_a_returnedData )
+{	
+	u8 u8_l_ret = DIO_OKAY;
+ 4a2:	86 ef       	ldi	r24, 0xF6	; 246
+			case B:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINB_REG , enm_a_pinNumber );
+			break;
+			case C:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINC_REG , enm_a_pinNumber );
+			break;
+ 4a4:	08 95       	ret
+			case D:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PIND_REG , enm_a_pinNumber );
+ 4a6:	70 b3       	in	r23, 0x10	; 16
+ 4a8:	81 e0       	ldi	r24, 0x01	; 1
+ 4aa:	90 e0       	ldi	r25, 0x00	; 0
+ 4ac:	9c 01       	movw	r18, r24
+ 4ae:	06 2e       	mov	r0, r22
+ 4b0:	02 c0       	rjmp	.+4      	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+ 4b2:	22 0f       	add	r18, r18
+ 4b4:	33 1f       	adc	r19, r19
+ 4b6:	0a 94       	dec	r0
+ 4b8:	e2 f7       	brpl	.-8      	; 0x4b2 <__EEPROM_REGION_LENGTH__+0xb2>
+ 4ba:	87 2f       	mov	r24, r23
+ 4bc:	90 e0       	ldi	r25, 0x00	; 0
+ 4be:	82 23       	and	r24, r18
+ 4c0:	93 23       	and	r25, r19
+ 4c2:	02 c0       	rjmp	.+4      	; 0x4c8 <__EEPROM_REGION_LENGTH__+0xc8>
+ 4c4:	95 95       	asr	r25
+ 4c6:	87 95       	ror	r24
+ 4c8:	6a 95       	dec	r22
+ 4ca:	e2 f7       	brpl	.-8      	; 0x4c4 <__EEPROM_REGION_LENGTH__+0xc4>
+ 4cc:	21 e0       	ldi	r18, 0x01	; 1
+ 4ce:	89 2b       	or	r24, r25
+ 4d0:	09 f4       	brne	.+2      	; 0x4d4 <__EEPROM_REGION_LENGTH__+0xd4>
+ 4d2:	20 e0       	ldi	r18, 0x00	; 0
+ 4d4:	fa 01       	movw	r30, r20
+ 4d6:	20 83       	st	Z, r18
+ Output: enm_dio_errors_t
+ Description: Function to get Pin value.
+*/
+enm_dio_errors_t DIO_read ( enm_dio_portNumber_t enm_a_portNumber, enm_dio_pinNumber_t enm_a_pinNumber, boolean *pbool_a_returnedData )
+{	
+	u8 u8_l_ret = DIO_OKAY;
+ 4d8:	86 ef       	ldi	r24, 0xF6	; 246
+			case C:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PINC_REG , enm_a_pinNumber );
+			break;
+			case D:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PIND_REG , enm_a_pinNumber );
+			break;
+ 4da:	08 95       	ret
+			break;
+		}
+	}
+	else
+	{
+		u8_l_ret = DIO_PIN_NUMBER_ERROR;
+ 4dc:	82 ef       	ldi	r24, 0xF2	; 242
+ 4de:	08 95       	ret
+			break;
+			case D:
+				*pbool_a_returnedData = GET_BIT( DIO_U8_PIND_REG , enm_a_pinNumber );
+			break;
+			default:
+			u8_l_ret = DIO_PORT_NUMBER_ERROR;
+ 4e0:	81 ef       	ldi	r24, 0xF1	; 241
+	else
+	{
+		u8_l_ret = DIO_PIN_NUMBER_ERROR;
+	}
+	return u8_l_ret;
+}
+ 4e2:	08 95       	ret
+
+000004e4 <__tablejump2__>:
+ 4e4:	ee 0f       	add	r30, r30
+ 4e6:	ff 1f       	adc	r31, r31
+ 4e8:	05 90       	lpm	r0, Z+
+ 4ea:	f4 91       	lpm	r31, Z
+ 4ec:	e0 2d       	mov	r30, r0
+ 4ee:	09 94       	ijmp
+
+000004f0 <_exit>:
+ 4f0:	f8 94       	cli
+
+000004f2 <__stop_program>:
+ 4f2:	ff cf       	rjmp	.-2      	; 0x4f2 <__stop_program>
